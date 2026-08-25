@@ -1,0 +1,19 @@
+@Controller
+public class StudentPageController {
+
+    private final StudentRepository repository;
+
+    public StudentPageController(StudentRepository repository) {
+        this.repository = repository;
+    }
+
+    @GetMapping("/student-page")
+    public String studentPage(Model model) {
+
+        model.addAttribute(
+                "students",
+                repository.findAll());
+
+        return "students";
+    }
+}
